@@ -15,17 +15,14 @@ public class Testing : MonoBehaviour
 
     private Coroutine _printHello;
 
+    private ButtonMouse getAnyKey;
+
     // Start is called before the first frame update
     private void Start()
     {
         _printHello = StartCoroutine(PrintHello(_seconds));
         StartCoroutine(CountUp(_secondUP, _secStop));
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
+        StartCoroutine(BeingPressed());
     }
 
     /// <summary>
@@ -62,5 +59,17 @@ public class Testing : MonoBehaviour
 
             yield return waitForSeconds;
         }
+    }
+
+    private IEnumerator BeingPressed() 
+    {
+        ButtonMouse wfp = new ButtonMouse();
+        while (true)
+        {
+            yield return wfp;
+            Debug.Log($"Estou a ser pressionado");
+        }
+
+        
     }
 }
